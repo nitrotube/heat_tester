@@ -30,6 +30,9 @@ with open(date_string + '.csv', 'w', newline='') as csvfile:
         core0_temp = subprocess.check_output("sensors | grep 'Core 0'", shell=True, universal_newlines=True)
         core0_temp = core0_temp[core0_temp.find('+') + 1:core0_temp.find('+') + 4]
 
+        gpu_frequency = subprocess.check_output("sudo cat /sys/class/drm/card0/gt_cur_freq_mhz",
+                                                shell=True, universal_newlines=True)
+
         if core0_temp[2] == '.':
             core0_temp = core0_temp[:2]
         core0_temp = int(core0_temp)
@@ -47,6 +50,6 @@ with open(date_string + '.csv', 'w', newline='') as csvfile:
         cpu_frequency = int(cpu_frequency[cpu_frequency.find('.') - 4:cpu_frequency.find('.')])
         print(cpu_frequency)
 
-        my_writer.writerow([time_string, core0_temp, core1_temp, cpu_frequency])
+        my_writer.writerow([time_string, core0_temp, core1_temp, cpu_frequency, gpu_frequency])
 
         time.sleep(STAT_INTERVAL)
