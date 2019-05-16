@@ -5,6 +5,8 @@ import csv
 
 STAT_INTERVAL = 1
 
+print("The logger will run till stopped. For automated testing see _test.py files.")
+
 date_string = str(datetime.datetime.now().strftime('%d_%m_%y_%H_%M_%S'))
 print(date_string)
 

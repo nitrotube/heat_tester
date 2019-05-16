@@ -7,6 +7,8 @@ import os
 STAT_INTERVAL = 1
 STAT_TIME_LIMIT = 600
 
+print("The test will take " + str(STAT_TIME_LIMIT) + " second. To change that, set the limit in code (STAT_TIME_LIMIT")
+
 date_string = str(datetime.datetime.now().strftime('%d_%m_%y_%H_%M_%S'))
 print(date_string)
 
