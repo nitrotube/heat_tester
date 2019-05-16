@@ -13,8 +13,3 @@ sudo apt-get install python3-pip
 
 pip3 install sip
 pip3 install PyQt5
-
-#git clone https://github.com/jmechnich/intel-power-control.git
-#cd intel-power-control
-#make
-#sudo make install
