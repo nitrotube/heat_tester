@@ -10,7 +10,7 @@ print("The logger will run till stopped. For automated testing see _test.py file
 date_string = str(datetime.datetime.now().strftime('%d_%m_%y_%H_%M_%S'))
 print(date_string)
 
-with open(date_string+'.csv', 'w', newline='') as csvfile:
+with open("/home/kitcar/car-scripts/heat_tester/" + date_string+'.csv', 'w', newline='') as csvfile:
     my_writer = csv.writer(csvfile, delimiter=',',
                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
     my_writer.writerow(['Zeit', 'Core 0 Temp', 'Core 1 Temp', 'CPU Freq'])
