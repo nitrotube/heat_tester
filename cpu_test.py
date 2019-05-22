@@ -8,21 +8,20 @@ import sys
 STAT_INTERVAL = 1
 STAT_TIME_LIMIT = 600
 
-print(str(sys.argv))
-
 print("The test will take " + str(STAT_TIME_LIMIT) + " seconds. To change that, set the limit in code (STAT_TIME_LIMIT")
 
 date_string = str(datetime.datetime.now().strftime('%d_%m_%y_%H_%M_%S'))
-print(date_string)
 
 p = os.popen('stress-ng --matrix 0 --tz -t 30m')
 
-if str(sys.argv[1]) == "log":
+if len(sys.argv > 1) and (str(sys.argv[1]) == "log"):
     with open(date_string + '.csv', 'w', newline='') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=',',
                                quotechar='"', quoting=csv.QUOTE_MINIMAL)
         my_writer.writerow(['Zeit', 'Core 0 Temp', 'Core 1 Temp', 'CPU Freq'])
         i = 0
+
+        print("Running the script with logs")
         while (i <= STAT_TIME_LIMIT):
             i += 1
 
@@ -52,3 +51,10 @@ if str(sys.argv[1]) == "log":
             my_writer.writerow([time_string, core0_temp, core1_temp, cpu_frequency])
 
             time.sleep(STAT_INTERVAL)
+else:
+    i = 0
+
+    print("To run the script with logs simply enter 'python3 cpu_test.py log'")
+    while (i <= STAT_TIME_LIMIT):
+        i += 1
+        time.sleep(STAT_INTERVAL)
