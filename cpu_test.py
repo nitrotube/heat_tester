@@ -14,7 +14,7 @@ date_string = str(datetime.datetime.now().strftime('%d_%m_%y_%H_%M_%S'))
 
 p = os.popen('stress-ng --matrix 0 --tz -t 30m')
 
-if len(sys.argv > 1) and (str(sys.argv[1]) == "log"):
+if (len(sys.argv) > 1) and (str(sys.argv[1]) == "log"):
     with open(date_string + '.csv', 'w', newline='') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=',',
                                quotechar='"', quoting=csv.QUOTE_MINIMAL)

@@ -16,7 +16,7 @@ p = os.popen('glmark2 --run forever -b terrain')
 time.sleep(1)
 r = os.popen('glmark2 --run forever -b terrain')
 
-if len(sys.argv > 1) and (str(sys.argv[1]) == "log"):
+if (len(sys.argv) > 1) and (str(sys.argv[1]) == "log"):
     with open(date_string + '.csv', 'w', newline='') as csvfile:
         my_writer = csv.writer(csvfile, delimiter=',',
                                quotechar='"', quoting=csv.QUOTE_MINIMAL)
